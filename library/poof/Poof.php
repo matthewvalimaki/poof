@@ -5,6 +5,8 @@ use Library\Poof\Formatter;
 
 class Poof
 {
+	const VERSION = '0.0.1';
+	
 	protected $_childObjects = array();
 	
 	public function __construct()

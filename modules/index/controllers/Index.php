@@ -7,6 +7,7 @@ class Index extends controllers\ControllerAbstract
 {
 	public function index()
 	{
-		$this->view->first_name = 'matthew';
+		$user = $this->_newUserContainer();
+		$user->setFirstName();
 	}
 }

@@ -1,6 +1,7 @@
 <?php
 namespace Library\Poof\Controllers;
-use Library\Poof\Views;
+use Library\Poof\Views,
+		library\poof\containers;
 
 abstract class ControllerAbstract
 {
@@ -30,5 +31,14 @@ abstract class ControllerAbstract
 	public function getView()
 	{
 		return $this->view;
+	}
+	
+	protected function _newUserContainer()
+	{
+		$container = new User();
+		
+		if ($container->declareToView) {
+			
+		}
 	}
 }
