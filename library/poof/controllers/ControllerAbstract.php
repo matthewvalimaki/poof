@@ -1,7 +1,7 @@
 <?php
 namespace Library\Poof\Controllers;
 use Library\Poof\Views,
-		library\poof\containers;
+		Library\Poof\Containers;
 
 abstract class ControllerAbstract
 {
@@ -25,7 +25,7 @@ abstract class ControllerAbstract
 		
 		$this->$action();
 		
-		new views\View($this);
+		new Views\View($this);
 	}
 	
 	public function getView()
@@ -33,12 +33,23 @@ abstract class ControllerAbstract
 		return $this->view;
 	}
 	
-	protected function _newUserContainer()
+	protected function _newContainer($type)
 	{
-		$container = new User();
+		$containerName = 'Library\Poof\Containers\\' . ucfirst($type);
+
+		return new $containerName();
+	}
+	
+	protected function _addContainer($type)
+	{
+		$container = $this->_newContainer($type);
 		
 		if ($container->declareToView) {
+			$var = strtolower($type);
 			
+			$this->view->$var = $container;
 		}
+		
+		return $container;
 	}
 }

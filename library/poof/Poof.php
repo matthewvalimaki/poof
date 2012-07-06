@@ -32,7 +32,7 @@ class Poof
 	{
 		return $this->_childObjects[$name];
 	}
-	
+
 	public function __toString()
 	{
 		return (string) new Formatter\Html($this);
